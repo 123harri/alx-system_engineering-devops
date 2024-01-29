@@ -5,14 +5,16 @@
 counter=1
 
 # Loop while counter is less than or equal to 10
-while [ $counter -le 10 ]; do
-    if [ $counter -eq 4 ]; then
-        echo "Bad Luck"
-    elif [ $counter -eq 8 ]; then
-        echo "Good Luck"
-    else
-        echo "Best School"
-    fi
-
-    ((counter++))
+while [ $count -lt 10 ]
+do
+  if [ $count -eq 3 ]
+  then
+    echo "bad luck"
+  elif [ $count -eq 7 ]
+  then
+    echo "good luck"
+  else
+    echo "Best School"
+  fi
+  (( count++ ))
 done
