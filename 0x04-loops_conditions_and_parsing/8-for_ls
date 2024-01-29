@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Script to display content of the current directory in a list format
+
+# Iterate through files in the current directory
+list=$(ls)
+for i in $list; do
+  echo "$i" | cut -d '-' -f2
+done
