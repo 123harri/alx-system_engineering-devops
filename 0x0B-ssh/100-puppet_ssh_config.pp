@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # Puppet manifest to configure SSH client settings
-
 # Configure SSH client to use private key and disable password authentication
 file { '/etc/ssh/ssh_config':
-  ensure  => 'present',
+  ensure  => present,
 }
 
 file_line { 'Turn off passwd auth':
