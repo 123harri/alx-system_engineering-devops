@@ -1,0 +1,8 @@
+# SSH Config File
+#
+Host *
+	Hostname 54.237.122.100
+	sendEnv LANG LC_*
+	User ubuntu
+	PasswordAuthentication no
+	IdentityFile ~/.ssh/school
