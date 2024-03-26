@@ -7,7 +7,6 @@ file { '/etc/ssh/ssh_config':
               Host ubuntu\n
                   HostName 54.237.122.100\n
                   IdentityFile ~/.ssh/school\n
-                  PreferredAuthentications publickey\n
                   PasswordAuthentication no\n",
   mode    => '0644',
   owner   => 'root',

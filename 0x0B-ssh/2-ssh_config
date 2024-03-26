@@ -1,7 +1,7 @@
 # SSH Config File
 #
 Host *
-	Hostname 54.237.122.100
+	Hostname 100.25.188.51
 	sendEnv LANG LC_*
 	User ubuntu
 	PasswordAuthentication no
