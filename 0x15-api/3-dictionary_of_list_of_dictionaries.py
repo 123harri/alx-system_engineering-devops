@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-Script to fetch and display employee TODO list progress
-from a REST API and export data in JSON format.
+Script to fetch and display employee TODO list progress from a
+REST API and export data for all employees in JSON format.
 """
 
 import csv
