@@ -4,31 +4,33 @@ Script to fetch and display employee TODO list progress from a
 REST API and export data for all employees in JSON format.
 """
 
-import csv
 import json
 import requests
 import sys
 
-
 if __name__ == '__main__':
-    USER_ID = sys.argv[1]
-    url_to_user = 'https://jsonplaceholder.typicode.com/users/' + USER_ID
-    res = requests.get(url_to_user)
-    """Documentation"""
-    USERNAME = res.json().get('username')
-    """Documentation"""
-    url_to_task = url_to_user + '/todos'
-    res = requests.get(url_to_task)
-    tasks = res.json()
+    url_to_users = 'https://jsonplaceholder.typicode.com/users'
+    users_response = requests.get(url_to_users)
+    users_data = users_response.json()
 
-    dict_data = {USER_ID: []}
-    for task in tasks:
-        TASK_COMPLETED_STATUS = task.get('completed')
-        TASK_TITLE = task.get('title')
-        dict_data[USER_ID].append({
-                                  "task": TASK_TITLE,
-                                  "completed": TASK_COMPLETED_STATUS,
-                                  "username": USERNAME})
-    """print(dict_data)"""
-    with open('{}.json'.format(USER_ID), 'w') as f:
-        json.dump(dict_data, f)
+    all_tasks = {}
+    for user in users_data:
+        user_id = str(user['id'])
+        username = user['username']
+        url_to_tasks = f'https://jsonplaceholder.typicode.com/users/' \
+                       f'{user_id}/todos'
+        tasks_response = requests.get(url_to_tasks)
+        tasks_data = tasks_response.json()
+
+        user_tasks = []
+        for task in tasks_data:
+            user_tasks.append({
+                "task": task['title'],
+                "completed": task['completed'],
+                "username": username
+            })
+
+        all_tasks[user_id] = user_tasks
+
+    with open('todo_all_employees.json', 'w') as f:
+        json.dump(all_tasks, f, indent=4)
