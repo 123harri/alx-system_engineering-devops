@@ -1,0 +1,19 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name 54.166.130.80;
+    add_header X-Served-By 525492-web-01;
+
+    # Route /airbnb-onepage/ requests to Airbnb_clone_v2
+    location /airbnb-onepage/ {
+        proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+    }
+
+    # Error page for 404 errors
+    error_page 404 /404.html;
+    location = /404.html {
+        root /var/www/html;
+        internal;
+    }
+i}
